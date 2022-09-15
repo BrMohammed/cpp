@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:03 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/15 21:56:34 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/15 22:44:39 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ std::string PhoneBook::bigh_add(std::string buffer)
 //The contact fields are: first name, last name, nickname, phone number, darkest secret.
 void PhoneBook::show_for_the_index(int searsh)
 {
-    std::cout << "add the First Name : " << this->contacts[searsh].first_name << std::endl;
-    std::cout << "add the last name : " << this->contacts[searsh].last_name << std::endl;
-    std::cout << "add the nickname : " << this->contacts[searsh].nickname << std::endl;
-    std::cout << "add phone number : " << this->contacts[searsh].phone_number << std::endl;
-    std::cout << "add darkest secret : " << this->contacts[searsh].darkest_secret << std::endl;
+    std::cout << "add the First Name : " << this->contacts[searsh].geter_first_name() << std::endl;
+    std::cout << "add the last name : " << this->contacts[searsh].geter_last_name() << std::endl;
+    std::cout << "add the nickname : " << this->contacts[searsh].geter_nickname() << std::endl;
+    std::cout << "add phone number : " << this->contacts[searsh].geter_phone_number() << std::endl;
+    std::cout << "add darkest secret : " << this->contacts[searsh].geter_darkest_secret() << std::endl;
 }
 void PhoneBook::show_contacts(void)
 { 
@@ -63,12 +63,12 @@ void PhoneBook::show_contacts(void)
     for (int i = 0;  i < 8; i++)
     {
         std::cout << vertical << " " << i << std::setfill (' ') << std::setw (11)<< vertical ;
-        std::cout <<  " " << bigh_add(this->contacts[i].first_name) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].first_name).length()) << vertical ; 
-        std::cout <<  " " << bigh_add(this->contacts[i].last_name) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].last_name).length())<< vertical ;
-        std::cout <<  " " << bigh_add(this->contacts[i].nickname) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].nickname).length())<< vertical << '\n';
+        std::cout <<  " " << bigh_add(this->contacts[i].geter_first_name()) << std::setfill (' ') << 
+            std::setw (size_of_case - bigh_add(this->contacts[i].geter_first_name()).length()) << vertical ; 
+        std::cout <<  " " << bigh_add(this->contacts[i].geter_last_name()) << std::setfill (' ') << 
+            std::setw (size_of_case - bigh_add(this->contacts[i].geter_last_name()).length())<< vertical ;
+        std::cout <<  " " << bigh_add(this->contacts[i].geter_nickname()) << std::setfill (' ') << 
+            std::setw (size_of_case - bigh_add(this->contacts[i].geter_nickname()).length())<< vertical << '\n';
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
