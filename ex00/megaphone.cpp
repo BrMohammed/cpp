@@ -24,7 +24,8 @@ int main(int argc, char** argv)
         }
     }
     else
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" ;
     std::cout << "\n";
+    //system("leaks megaphone");
     return(0);
 }
