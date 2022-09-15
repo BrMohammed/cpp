@@ -2,16 +2,16 @@ NAME = phonebook
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = phonebook.cpp
+FILES = phonebook.cpp contact.cpp main.cpp
 
 RM = rm -f
 
 all : $(NAME)
 
 $(NAME) : $(FILES)
-			$(CC) $(CFLAGS) $(FILES) -o $(NAME)
+			$(CC) $(CPPFLAGS) $(FILES) -o $(NAME)
 
 clean :
 		$(RM) $(NAME)

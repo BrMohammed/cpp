@@ -1,23 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 15:57:03 by brmohamm          #+#    #+#             */
+/*   Updated: 2022/09/15 15:57:54 by brmohamm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include "phonebook.hpp"
 
-void creat_one_colom(std::string word)
-{
-    char horezon = '-';
-    char vertical = '|';
-
-    std::cout << " " << std::setfill (horezon) << std::setw (10) << horezon << '\n';
-    std::cout << vertical << " hi" << std::setfill (' ') << std::setw (8);
-    std::cout << vertical << '\n';
-    std::cout << " " << std::setfill (horezon) << std::setw (10) << horezon << '\n';
-}
 int main()
 {
-    //Display : a list of 4 columns: index, first name, last name , nickname.
-    
-
-    creat_one_colom("hi");
- 
+    PhoneBook Inst;
     return (0);
 }
