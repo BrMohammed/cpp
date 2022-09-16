@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:09 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/15 19:40:03 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/16 00:58:59 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ class PhoneBook
     void show_contacts(void);
     std::string bigh_add(std::string buffer);
     void show_for_the_index(int searsh);
+    void search_meth(void);
 };
 #endif

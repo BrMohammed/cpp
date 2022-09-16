@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:03 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/15 22:44:39 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/16 01:10:14 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,40 @@ void PhoneBook::show_for_the_index(int searsh)
     std::cout << "add the nickname : " << this->contacts[searsh].geter_nickname() << std::endl;
     std::cout << "add phone number : " << this->contacts[searsh].geter_phone_number() << std::endl;
     std::cout << "add darkest secret : " << this->contacts[searsh].geter_darkest_secret() << std::endl;
+}
+
+void PhoneBook::search_meth(void)
+{
+    std::string buufer_search;
+    std::cout << "Please select the index : ";
+    std::cin >> buufer_search;
+    if(std::cin.eof())
+        return;
+    for(int i = 0;i < (int)buufer_search.length(); i++)
+    {
+        if(!std::isdigit(buufer_search[i]))
+        {
+            std::cout << "\n index not valid !! \n" << std::endl;
+            search_meth();
+        }
+    }
+    if ((int)buufer_search.length() > 2)
+    {
+         std::cout << "\n index not valid !! \n" << std::endl;
+        show_contacts();
+    }
+    int buufer_search_num = stoi(buufer_search);
+    if (buufer_search_num < 8)
+    {
+        show_for_the_index(buufer_search_num);
+        show_contacts();
+    }
+    else
+    {
+        std::cout << "\n index not valid !! \n" << std::endl;
+        show_contacts();
+    }
+        
 }
 void PhoneBook::show_contacts(void)
 { 
@@ -88,16 +122,9 @@ void PhoneBook::show_contacts(void)
     }
     else if (buffer == "SEARCH")
     {
-        int buufer_search;
-        std::cout << "Please select the index : ";
-        std::cin >> buufer_search;
+        search_meth();
         if(std::cin.eof())
-            return;
-        if (buufer_search <= 8)
-        {
-            show_for_the_index(buufer_search);
-            show_contacts();
-        } 
+        return;
     }
     else if (buffer == "EXIT")
         return ;
