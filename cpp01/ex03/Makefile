@@ -4,8 +4,7 @@ CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = Makefile main.cpp Weapon.hpp Weapon.cpp, HumanA.hpp\
-		HumanA.cpp HumanB.hpp, HumanB.cpp
+FILES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 RM = rm -f
 
