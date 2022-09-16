@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 19:30:05 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 22:17:07 by brmohamm         ###   ########.fr       */
+/*   Created: 2022/09/16 20:59:01 by brmohamm          #+#    #+#             */
+/*   Updated: 2022/09/16 22:21:26 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+void Zombie::announce( void )
 {
-    Zombie *n_zombie;
+    std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-    n_zombie = newZombie("von");
-    randomChump("von");
-    delete n_zombie;
+Zombie::Zombie()
+{
+   
+}
+
+Zombie::Zombie(std::string name)
+{
+    this->name = name;
+}
+
+Zombie::~Zombie(void)
+{
+    std::cout << "destructor called : " << this->name << " : Gaaaaaaa..." << std::endl;
 }

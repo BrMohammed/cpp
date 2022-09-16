@@ -1,10 +1,10 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = moor_brains
 
 CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+FILES = zombieHorde.cpp Zombie.cpp main.cpp
 
 RM = rm -f
 

@@ -1,10 +1,11 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = Unnecessary_violence
 
 CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+FILES = Makefile main.cpp Weapon.hpp Weapon.cpp, HumanA.hpp\
+		HumanA.cpp HumanB.hpp, HumanB.cpp
 
 RM = rm -f
 

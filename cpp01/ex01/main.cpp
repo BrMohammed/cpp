@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 19:30:05 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 22:17:07 by brmohamm         ###   ########.fr       */
+/*   Created: 2022/09/16 20:59:10 by brmohamm          #+#    #+#             */
+/*   Updated: 2022/09/16 23:16:03 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int main()
 {
     Zombie *n_zombie;
+    int number = 5;
 
-    n_zombie = newZombie("von");
-    randomChump("von");
-    delete n_zombie;
+    n_zombie = zombieHorde(number,"von");
+    for (int i = 0; i < number ; i++)
+        n_zombie[i].announce();
+    delete [] n_zombie;
+    //system("leaks moor_brains");
 }
