@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:03 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 01:10:14 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:58:24 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void PhoneBook::search_meth(void)
 {
     std::string buufer_search;
     std::cout << "Please select the index : ";
+    std::cin.clear();
     std::cin >> buufer_search;
     if(std::cin.eof())
         return;
@@ -50,24 +51,25 @@ void PhoneBook::search_meth(void)
         if(!std::isdigit(buufer_search[i]))
         {
             std::cout << "\n index not valid !! \n" << std::endl;
-            search_meth();
+            return;
         }
     }
     if ((int)buufer_search.length() > 2)
     {
-         std::cout << "\n index not valid !! \n" << std::endl;
-        show_contacts();
+        std::cout << "\n index not valid !! \n" << std::endl;
+        return;
     }
     int buufer_search_num = stoi(buufer_search);
     if (buufer_search_num < 8)
     {
-        show_for_the_index(buufer_search_num);
-        show_contacts();
+         show_for_the_index(buufer_search_num);
+         return;
     }
+       
     else
     {
         std::cout << "\n index not valid !! \n" << std::endl;
-        show_contacts();
+        return;
     }
         
 }
@@ -80,6 +82,7 @@ void PhoneBook::show_contacts(void)
     std::string buffer;
         
     // index, first name, last name and nickname.
+    
 
     std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
     std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
@@ -109,6 +112,8 @@ void PhoneBook::show_contacts(void)
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon << '\n';
     }
     std::cout << "Please insert one of this keyword : \n ADD , SEARCH or EXIT" << std::endl;
+    std::cin.clear();
+    buffer = "";
     std::cin >> buffer;
     if(std::cin.eof())
             return;
@@ -124,7 +129,8 @@ void PhoneBook::show_contacts(void)
     {
         search_meth();
         if(std::cin.eof())
-        return;
+            return;
+        show_contacts();
     }
     else if (buffer == "EXIT")
         return ;

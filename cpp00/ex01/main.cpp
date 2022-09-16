@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 11:58:09 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 00:58:59 by brmohamm         ###   ########.fr       */
+/*   Created: 2022/09/15 15:57:03 by brmohamm          #+#    #+#             */
+/*   Updated: 2022/09/16 13:45:24 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
 #include <iostream>
 #include <cstring>
 #include <iomanip>
-#include "contact.hpp"
-#include <string>
+#include "phonebook.hpp"
 
-
-class PhoneBook
+int main()
 {
-    Contact contacts[8];
-    public:
-        PhoneBook(void);
-    void show_contacts(void);
-    std::string bigh_add(std::string buffer);
-    void show_for_the_index(int searsh);
-    void search_meth(void);
-};
-#endif
+    PhoneBook Inst;
+    // system("leaks phonebook");
+    return (0);
+}

@@ -2,7 +2,7 @@ NAME = megaphone
 
 CC = c++ 
 
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98  -pedantic-errors  #-fsanitize=address -g
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98  -pedantic-errors
 
 FILES = megaphone.cpp
 
