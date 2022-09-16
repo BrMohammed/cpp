@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:57:51 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/15 23:57:22 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:10:06 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 //The contact fields are: first name, last name, nickname, phone number, darkest secret.
  void Contact::add_data(void)
  {
-   std::cin.ignore();
-   std::cin.clear();
+   
    std::cout << "add the First Name : " ;
    while (std::getline(std::cin, this->_first_name))
    {

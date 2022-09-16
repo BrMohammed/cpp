@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:03 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 13:58:24 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:28:07 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void PhoneBook::show_contacts(void)
 { 
     char horezon = '-';
     char vertical = '|';
-    int const size_of_case = 12;
     static int save_new;
     std::string buffer;
         
@@ -99,13 +98,17 @@ void PhoneBook::show_contacts(void)
     std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon << '\n';
     for (int i = 0;  i < 8; i++)
     {
-        std::cout << vertical << " " << i << std::setfill (' ') << std::setw (11)<< vertical ;
-        std::cout <<  " " << bigh_add(this->contacts[i].geter_first_name()) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].geter_first_name()).length()) << vertical ; 
-        std::cout <<  " " << bigh_add(this->contacts[i].geter_last_name()) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].geter_last_name()).length())<< vertical ;
-        std::cout <<  " " << bigh_add(this->contacts[i].geter_nickname()) << std::setfill (' ') << 
-            std::setw (size_of_case - bigh_add(this->contacts[i].geter_nickname()).length())<< vertical << '\n';
+        std::cout << vertical << std::setfill (' ') << " " << std::setw (11) << i << vertical ;
+        
+        std::cout  << std::setfill (' ') << std::setw (12) <<
+            bigh_add(this->contacts[i].geter_first_name()) <<  vertical ; 
+             
+        std::cout << std::setfill (' ') << std::setw (12) << 
+            bigh_add(this->contacts[i].geter_last_name()) << vertical ;
+            
+        std::cout << std::setfill (' ') << std::setw (12) << 
+            bigh_add(this->contacts[i].geter_nickname()) << vertical << '\n';
+            
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
         std::cout << " " << std::setfill (horezon) << std::setw (12) << horezon ;
@@ -113,8 +116,12 @@ void PhoneBook::show_contacts(void)
     }
     std::cout << "Please insert one of this keyword : \n ADD , SEARCH or EXIT" << std::endl;
     std::cin.clear();
-    buffer = "";
-    std::cin >> buffer;
+    while (std::getline(std::cin, buffer))
+   {
+      if(buffer.length() > 0 )
+         break;
+        std::cout << "Please insert one of this keyword : \n ADD , SEARCH or EXIT" << std::endl;
+   }
     if(std::cin.eof())
             return;
     if (buffer == "ADD")
