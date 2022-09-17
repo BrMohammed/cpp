@@ -1,4 +1,4 @@
-nAME = change
+NNAME = chanage
 
 CC = c++
 
@@ -8,12 +8,12 @@ FILES = main.cpp change.cpp
 
 RM = rm -f
 
-all : $(nAME)
+all : $(NNAME)
 
-$(nAME) : $(FILES)
-			$(CC) $(CPPFLAGS) $(FILES) -o $(nAME)
+$(NNAME) : $(FILES)
+			$(CC) $(CPPFLAGS) $(FILES) -o $(NNAME)
 
 clean :
-		$(RM) $(nAME)
+		$(RM) $(NNAME)
 
 re : clean all

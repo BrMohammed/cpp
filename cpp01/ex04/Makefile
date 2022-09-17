@@ -1,4 +1,4 @@
-NAME = change
+NAME = chanage
 
 CC = c++
 

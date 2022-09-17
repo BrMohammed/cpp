@@ -6,12 +6,12 @@ void Change::replace(std::string &src, std::string s1, std::string s2,int begin)
     
     if(src.find(s1,begin) != std::string::npos)
     {
-        rp_line_front = src.substr(0,src.find(s1));
-        rp_line_back = src.substr(src.find(s1) + s1.length());
+        rp_line_front = src.substr(0,src.find(s1,begin));
+        rp_line_back = src.substr(src.find(s1,begin) + s1.length());
         rp_line_front += s2 + rp_line_back;
         src = rp_line_front;
-        std::cout << src.find(s1) + s2.length() << std::endl;
-       // replace(src,s1,s2,src.find(s1) + s2.length());
+        begin = src.find(s1,begin) + s2.length();
+        replace(src,s1,s2,begin);
     }
 }
 
@@ -23,8 +23,8 @@ Change::Change(std::string fill_name, std::string s1, std::string s2)
 void Change::creation(std::string fill_name,
         std::string s1, std::string s2)
 {
-    (void)s1;
-    (void)s2;
+    if (s1 == "" || s2 == "")
+        return;
     std::ifstream input(fill_name);
     std::ofstream output(fill_name + ".replace");
     if(input.is_open())
