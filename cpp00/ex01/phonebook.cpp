@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:58:03 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 17:28:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:15:10 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ void PhoneBook::search_meth(void)
     std::string buufer_search;
     std::cout << "Please select the index : ";
     std::cin.clear();
-    std::cin >> buufer_search;
+    while (std::getline(std::cin, buufer_search))
+    {
+      if(buufer_search.length() > 0 )
+         break;
+     std::cout << "Please select the index : ";
+    }
     if(std::cin.eof())
         return;
     for(int i = 0;i < (int)buufer_search.length(); i++)

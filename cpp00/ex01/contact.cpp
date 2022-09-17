@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:57:51 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/09/16 17:10:06 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:29:01 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,84 @@
  void Contact::add_data(void)
  {
    
+   double espace;
    std::cout << "add the First Name : " ;
    while (std::getline(std::cin, this->_first_name))
    {
-      if(this->_first_name.length() > 0 )
+      espace = true;
+      for(int i = 0; i < (int)this->_first_name.length(); i++)
+      {
+         if( this->_first_name[i] != ' ' && this->_first_name[i] != 9)
+         {
+            espace = false; 
+            break;
+         }
+      }
+      if(this->_first_name.length() > 0 && espace == false)
          break;
       std::cout << "add the First Name : " ;
    }
    std::cout << "add the last name : " ;
    while (std::getline(std::cin, this->_last_name))
    {
-      if(this->_last_name.length() > 0 )
+      espace = true;
+      for(int i = 0; i < (int)this->_last_name.length(); i++)
+      {
+         if( this->_last_name[i] != ' ' && this->_last_name[i] != 9)
+         {
+            espace = false; 
+            break;
+         }
+      }
+      if(this->_last_name.length() > 0 && espace == false)
          break;
       std::cout << "add the last name : " ;
    }
    std::cout << "add the nickname : " ;
    while (std::getline(std::cin, this->_nickname))
    {
-      if(this->_nickname.length() > 0 )
+       espace = true;
+      for(int i = 0; i < (int)this->_nickname.length(); i++)
+      {
+         if( this->_nickname[i] != ' ' && this->_nickname[i] != 9)
+         {
+            espace = false; 
+            break;
+         }
+      }
+      if(this->_nickname.length() > 0 && espace == false)
          break;
       std::cout << "add the nickname : " ;
    }
    std::cout << "add phone number : ";
    while (std::getline(std::cin, this->_phone_number))
    {
-      if(this->_phone_number.length() > 0 )
+       espace = true;
+      for(int i = 0; i < (int)this->_phone_number.length(); i++)
+      {
+         if( this->_phone_number[i] != ' ' && this->_phone_number[i] != 9)
+         {
+            espace = false; 
+            break;
+         }
+      }
+      if(this->_phone_number.length() > 0 && espace == false)
          break;
       std::cout << "add phone number : ";
    }
    std::cout << "add darkest secret : ";
    while (std::getline(std::cin, this->_darkest_secret))
    {
-      if(this->_darkest_secret.length() > 0 )
+     espace = true;
+      for(int i = 0; i < (int)this->_darkest_secret.length(); i++)
+      {
+         if( this->_darkest_secret[i] != ' ' && this->_darkest_secret[i] != 9)
+         {
+            espace = false; 
+            break;
+         }
+      }
+      if(this->_darkest_secret.length() > 0 && espace == false)
          break;
       std::cout << "add phone number : ";
    }

@@ -1,0 +1,19 @@
+nAME = change
+
+CC = c++
+
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
+
+FILES = main.cpp change.cpp
+
+RM = rm -f
+
+all : $(nAME)
+
+$(nAME) : $(FILES)
+			$(CC) $(CPPFLAGS) $(FILES) -o $(nAME)
+
+clean :
+		$(RM) $(nAME)
+
+re : clean all
