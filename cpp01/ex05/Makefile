@@ -1,10 +1,10 @@
-NAME = change
+NAME = Harl
 
 CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = main.cpp change.cpp
+FILES = main.cpp Harl.cpp 
 
 RM = rm -f
 
