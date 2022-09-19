@@ -174,3 +174,22 @@ Fixed Fixed::operator - (Fixed const & rhs)
     tmp._number = ((double)(*this)._number - rhs._number);
     return tmp;
 }
+
+
+float bsp( Fixed a, Fixed  b, Fixed  c, Fixed const point)
+{
+    (void)point;
+    Fixed s;
+    s = (a + b + c) / 2;
+    Fixed A = sqrtf(s.getRawBits()*(s.getRawBits()-a.getRawBits())*(s.getRawBits()-b.getRawBits())*(s.getRawBits()-c.getRawBits()));
+    return(A.getRawBits());
+}
+
+float bsp1( float a, float  b, float  c, float  point)
+{
+    (void)point;
+    float s;
+    s = (a + b + c) / 2;
+    float A = sqrtf(s*(s-a)*(s-b)*(s-c));
+    return(A);
+}

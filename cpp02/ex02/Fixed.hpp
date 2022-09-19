@@ -50,5 +50,6 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
 #define FixedToFloat(x) ((double)(x) / (1<<_fractional))
 #define IntToFixed(x) (x << _fractional)
 #define FixedToInt(x) (x >> _fractional)
-
+float bsp( Fixed const a, Fixed const b, Fixed const c, Fixed const point);
+float bsp1( float a, float b, float c, float point);
 #endif
