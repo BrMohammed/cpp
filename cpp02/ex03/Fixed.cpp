@@ -76,7 +76,7 @@ int Fixed::getRawBits(void) const
 {   
     return this->_number;
 }
-void Fixed::setRawBits( int const raw )
+void Fixed::setRawBits( int  raw )
 {
     this->_number = raw;
 }
@@ -173,4 +173,23 @@ Fixed Fixed::operator - (Fixed const & rhs)
 
     tmp._number = ((double)(*this)._number - rhs._number);
     return tmp;
+}
+
+
+float bsp( Fixed a, Fixed  b, Fixed  c, Fixed const point)
+{
+    (void)point;
+    Fixed s;
+    s = (a + b + c) / 2;
+    Fixed A = sqrtf(s.toFloat()*(s.toFloat()-a.toFloat())*(s.toFloat()-b.toFloat())*(s.toFloat()-c.toFloat()));
+    return(A.toFloat());
+}
+
+float bsp1( float a, float  b, float  c, float  point)
+{
+    (void)point;
+    float s;
+    s = (a + b + c) / 2;
+    float A = sqrtf(s*(s-a)*(s-b)*(s-c));
+    return(A);
 }

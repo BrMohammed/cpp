@@ -1,10 +1,10 @@
-NAME = Fixed
+NAME = BSP
 
 CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES = Fixed.cpp main.cpp 
+FILES = Fixed.cpp main.cpp Point.cpp
 
 RM = rm -f
 
