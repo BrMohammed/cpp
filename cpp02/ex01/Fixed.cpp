@@ -27,7 +27,6 @@ Fixed::Fixed (float const number)
 Fixed::~Fixed()
 {
     std::cout << "Destructor called" << std::endl;
-    this->_number = 0;
 }
 
 Fixed & Fixed::operator=(Fixed const & rhs)
@@ -45,7 +44,7 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
 }
 float  Fixed::toFloat( void ) const
 {
-    return FixedToFloat(_number);
+    return FixedToFloat((float)_number);
 }
 int  Fixed::toInt( void ) const
 {

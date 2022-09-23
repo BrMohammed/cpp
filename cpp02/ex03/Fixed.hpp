@@ -20,23 +20,22 @@ class Fixed
         void setRawBits( int const raw );
 
         Fixed& operator = (Fixed const & rhs);
-        bool operator > (Fixed const & rhs);
-        bool operator < (Fixed const & rhs);
-        bool operator >= (Fixed const & rhs);
-        bool operator <= (Fixed const & rhs);
-        bool operator == (Fixed const & rhs);
-        bool operator != (Fixed const & rhs);
+        bool operator > (Fixed const & rhs) const;
+        bool operator < (Fixed const & rhs) const;
+        bool operator >= (Fixed const & rhs) const;
+        bool operator <= (Fixed const & rhs) const;
+        bool operator == (Fixed const & rhs) const;
+        bool operator != (Fixed const & rhs) const;
 
-        Fixed operator + (Fixed const & rhs);
-        Fixed operator - (Fixed const & rhs);
-        Fixed  operator * (Fixed const & rhs);
-        Fixed operator / (Fixed const & rhs);
+        Fixed operator + (Fixed const & rhs) const;
+        Fixed operator - (Fixed const & rhs) const;
+        Fixed  operator * (Fixed const & rhs) const;
+        Fixed operator / (Fixed const & rhs) const;
 
-        Fixed operator++();//++a
+        Fixed& operator++();//++a
         Fixed operator -- (int);//a--
         Fixed operator ++ (int);//a++
-        Fixed operator -- ();//--a
-
+        Fixed& operator -- ();//--a
         static const Fixed& min(Fixed const & lhs,Fixed const & rhs);
         static Fixed& min(Fixed & lhs,Fixed & rhs);
         static const Fixed& max(Fixed const & lhs,Fixed const & rhs);
@@ -46,8 +45,8 @@ class Fixed
         int toInt( void ) const;
 };
 std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
-#define FloatToFixed(x) ((double)(x)*(1<<_fractional))
-#define FixedToFloat(x) ((double)(x) / (1<<_fractional))
+#define FloatToFixed(x) ((x)*(1<<_fractional))
+#define FixedToFloat(x) ((x) / (1<<_fractional))
 #define IntToFixed(x) (x << _fractional)
 #define FixedToInt(x) (x >> _fractional)
 #endif

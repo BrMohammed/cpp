@@ -23,8 +23,8 @@ class Fixed
         int toInt( void ) const;
 };
 std::ostream & operator<<(std::ostream & o, Fixed const & rhs);
-#define FloatToFixed(x) (x*(float)(1<<_fractional))
-#define FixedToFloat(x) ((float)x / (float)(1<<_fractional))
+#define FloatToFixed(x) (x*(1<<_fractional))
+#define FixedToFloat(x) (x / (1<<_fractional))
 #define IntToFixed(x) (x << _fractional)
 #define FixedToInt(x) (x >> _fractional)
 

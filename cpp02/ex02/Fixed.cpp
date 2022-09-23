@@ -32,27 +32,27 @@ Fixed & Fixed::operator=(Fixed const & rhs)
         this->_number = rhs.getRawBits();
     return *this;
 }
-bool Fixed::operator > (Fixed const & rhs)
+bool Fixed::operator > (Fixed const & rhs) const
 {
     return ((*this)._number > rhs._number);
 }
-bool Fixed::operator < (Fixed const & rhs)
+bool Fixed::operator < (Fixed const & rhs)  const
 {
     return ((*this)._number < rhs._number);
 }
-bool Fixed::operator >= (Fixed const & rhs)
+bool Fixed::operator >= (Fixed const & rhs) const
 {
     return ((*this)._number >= rhs._number);
 }
-bool Fixed::operator <= (Fixed const & rhs)
+bool Fixed::operator <= (Fixed const & rhs) const
 {
     return ((*this)._number <= rhs._number);
 }
-bool Fixed::operator == (Fixed const & rhs)
+bool Fixed::operator == (Fixed const & rhs) const
 {
     return ((*this)._number == rhs._number);
 }
-bool Fixed::operator != (Fixed const & rhs)
+bool Fixed::operator != (Fixed const & rhs) const
 {
     return !((*this)._number == rhs._number);
 }
@@ -65,7 +65,7 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
 }
 float  Fixed::toFloat( void ) const
 {
-    return FixedToFloat(_number);
+    return FixedToFloat((float)_number);
 }
 int  Fixed::toInt( void ) const
 {
@@ -108,14 +108,13 @@ const Fixed& Fixed::max(Fixed const & lhs,Fixed const & rhs)
 
 Fixed& Fixed::max(Fixed & lhs,Fixed & rhs)
 {
-     std::cout << "------" << std::endl;
     if(lhs._number > rhs._number)
         return lhs;
     else
          return rhs;
 }
 
-Fixed Fixed::operator++()
+Fixed& Fixed::operator++()
 {
     ++(*this)._number;
     return *this;
@@ -129,7 +128,7 @@ Fixed Fixed::operator++(int)
     return tmp;
 }
 
-Fixed Fixed::operator--()
+Fixed& Fixed::operator--()
 {
     --(*this)._number;
     return *this;
@@ -137,12 +136,14 @@ Fixed Fixed::operator--()
 
 Fixed Fixed::operator--(int)
 {
+    Fixed tmp;
+    tmp._number = (*this)._number;
     (*this)._number--;
-    return *this;
+    return tmp;
 }
 
 
-Fixed Fixed::operator * (Fixed const & rhs)
+Fixed Fixed::operator * (Fixed const & rhs) const
 {
     Fixed tmp;
 
@@ -151,7 +152,7 @@ Fixed Fixed::operator * (Fixed const & rhs)
 }
 
 
-Fixed Fixed::operator / (Fixed const & rhs)
+Fixed Fixed::operator / (Fixed const & rhs) const
 {
     Fixed tmp;
 
@@ -159,18 +160,18 @@ Fixed Fixed::operator / (Fixed const & rhs)
     return tmp;
 }
 
-Fixed Fixed::operator + (Fixed const & rhs)
+Fixed Fixed::operator + (Fixed const & rhs) const
 {
     Fixed tmp;
 
-    tmp._number = ((double)(*this)._number + rhs._number);
+    tmp._number = ((*this)._number + rhs._number);
     return tmp;
 }
 
-Fixed Fixed::operator - (Fixed const & rhs)
+Fixed Fixed::operator - (Fixed const & rhs) const
 {
     Fixed tmp;
 
-    tmp._number = ((double)(*this)._number - rhs._number);
+    tmp._number = ((*this)._number - rhs._number);
     return tmp;
 }
