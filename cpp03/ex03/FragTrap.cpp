@@ -43,6 +43,4 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys()
 {
     std::cout << "FragTrap positive high fives " << std::endl;
-       // std::cout << "_Energypoints : "<< this->_Energypoints << " _AttackDamage : "<< this->_AttackDamage <<   " _HitPoint : " << this->_HitPoint << std::endl; 
-
 }

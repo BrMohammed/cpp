@@ -66,7 +66,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if(this->_Energypoints > 0 && this->_HitPoint > 0)
     {
-        --this->_Energypoints;
+         --this->_Energypoints;
         this->_HitPoint += amount;
         std::cout << "ClapTrap " << this->_Name << " repairs itself,  gets " << amount  << " hit points back , residual energy poit to :  " <<this->_Energypoints << std::endl;
     }
