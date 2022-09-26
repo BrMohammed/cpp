@@ -5,18 +5,20 @@
 #include "WrongCat.hpp"
 int main0()
 {
-    const Animal* meta = new Animal();
+    //const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
     i->makeSound(); //will output the cat sound!
     j->makeSound();
-    meta->makeSound();
+
     std::cout << "------------ \n";
     const WrongAnimal* m1 = new WrongCat();
     m1->makeSound();
-    delete meta;
+
+    std::cout << "------------ \n";
+
     delete i;
     delete j;
     delete m1;
@@ -25,7 +27,7 @@ int main0()
 int main()
 {
    main0();
-   //system("leaks Polymorphism");
+   system("leaks Polymorphism");
    // j->hi();
     return 0;
 }

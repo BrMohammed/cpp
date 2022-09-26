@@ -4,16 +4,20 @@
 #include <iostream>
 #include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 class Cat : public Animal
 {
     private :
-        Cat(std::string name);  
+        Brain* b;
     public :
-        Cat();
+        Cat(); 
+        Cat(std::string name);
         Cat(Cat const & Other);
         ~Cat();
         Cat &operator = (Cat const & rhs );
         void makeSound() const;
         std::string getType() const;
+        std::string get_b() const;
+        void set_b(std::string first);
 };
 #endif

@@ -8,7 +8,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("boot_clap_name")
     this->_HitPoint =  FragTrap::_HitPoint;
     this->_AttackDamage = FragTrap::_AttackDamage ;
 }
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name) : 
 {
     std::cout << "DiamondTrap : constructor called" << std::endl;
     ClapTrap::_Name = name + "_clap_name";

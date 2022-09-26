@@ -4,11 +4,13 @@ Dog::Dog()
 {
     std::cout << "Dog : Default constructor called" << std::endl;
     type = "Dog";
+    b = new Brain();
 }
 Dog::Dog(std::string name)
 {
     std::cout << "Dog : constructor called" << std::endl;
     type = name;
+    b = new Brain();
 }
 Dog::Dog(Dog const & Other)
 {
@@ -18,11 +20,14 @@ Dog::Dog(Dog const & Other)
 Dog::~Dog()
 {
     std::cout << "Dog : Destructor called" << std::endl;
+    delete b;
 }
 Dog &Dog::operator = (Dog const & rhs )
 {
     std::cout << "Dog : copy assignment operator called" << std::endl;
     this->type = rhs.type;
+    b = new Brain();
+    *b = *rhs.b;
     return *this;
 }
 void Dog::makeSound() const

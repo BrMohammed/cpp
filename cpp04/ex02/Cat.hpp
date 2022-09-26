@@ -4,10 +4,12 @@
 #include <iostream>
 #include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 class Cat : public Animal
 {
     private :
-        Cat(std::string name);  
+        Cat(std::string name);
+        Brain* b;
     public :
         Cat();
         Cat(Cat const & Other);

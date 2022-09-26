@@ -4,8 +4,9 @@ Cat::Cat()
 {
     std::cout << "Cat : Default constructor called" << std::endl;
     type = "Cat";
+    b = new Brain();
 }
-Cat::Cat(std::string name) 
+Cat::Cat(std::string name)
 {
     std::cout << "Cat : constructor called" << std::endl;
     type = name;
@@ -18,11 +19,14 @@ Cat::Cat(Cat const & Other)
 Cat::~Cat()
 {
     std::cout << "Cat : Destructor called" << std::endl;
+    delete b;
 }
 Cat &Cat::operator = (Cat const & rhs )
 {
     std::cout << "Cat : copy assignment operator called" << std::endl;
     this->type = rhs.type;
+    b = new Brain();
+    *b = *rhs.b;
     return *this;
 }
 void Cat::makeSound() const
