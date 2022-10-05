@@ -28,6 +28,7 @@ class Bureaucrat
         Bureaucrat& operator = (Bureaucrat const & rhs);
         std::string getName() const;
         int getGrade() const;
+        void signForm(std::string form, bool is_sign);
 };
 std::ostream & operator << (std::ostream & left , Bureaucrat const& right);
 #endif

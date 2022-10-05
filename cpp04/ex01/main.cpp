@@ -40,7 +40,13 @@ int main0()
 
 int main()
 {
-    main0();
+    //main0();
+    Cat ce;
+    {
+       // std::cout << "dd" << std::endl;
+        Cat cat = ce;
+      //  std::cout << "dd" << std::endl;
+    }
     //system("leaks Polymorphism");
     return 0;
 }

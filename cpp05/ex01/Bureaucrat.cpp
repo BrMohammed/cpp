@@ -40,7 +40,6 @@ int  Bureaucrat::getGrade() const
 
 std::ostream& operator << (std::ostream & left , Bureaucrat const & right)
 {
-    
     std::cout << "Copy assignment operator called" << std::endl;
     left << right.getName() << " bureaucrat grade " << right.getGrade();
    return left;
@@ -51,3 +50,11 @@ Bureaucrat& Bureaucrat::operator = (Bureaucrat const & rhs)
     _grade =  rhs.getGrade();
     return *this;
 }
+void Bureaucrat::signForm(std::string form, bool is_sign)
+{
+    if(is_sign)
+        std::cout <<  _name << " signed " << form << std::endl;
+    else
+        std::cout <<  _name << " couldn’t sign " << form << std::endl;
+}
+
