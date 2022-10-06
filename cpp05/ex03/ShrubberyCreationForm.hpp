@@ -5,7 +5,7 @@
 #include <fstream>
 class ShrubberyCreationForm : public Form
 {
-    public :
+    public : 
     ShrubberyCreationForm(std::string target);
     ShrubberyCreationForm();
     ShrubberyCreationForm(ShrubberyCreationForm const &  obj);

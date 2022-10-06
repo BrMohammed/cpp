@@ -1,13 +1,12 @@
 #include "Form.hpp"
-#include "Bureaucrat.hpp"
 
 Form::Form() : _name("boot") ,  _grade_to_sign(0),_grade_to_execute(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Form:: Form(std::string name,int grade_to_sign,int grade_to_execute) :  _name(name), _grade_to_sign(grade_to_sign) ,
-    _grade_to_execute(grade_to_execute)
+Form:: Form(std::string name,int grade_to_sign,int grade_to_execute , std::string target) :  _name(name), _grade_to_sign(grade_to_sign) ,
+    _grade_to_execute(grade_to_execute), _target(target)
 {
     std::cout << "constructor called" << std::endl;
      if(_grade_to_execute < 1 || _grade_to_sign < 1 )
@@ -31,6 +30,11 @@ std::string  Form::getName() const
     return _name;
 }
 
+std::string  Form::get_target() const
+{
+    return _target;
+}
+
 bool Form::get_is_signed() const
 {
     return _is_signed;
@@ -47,7 +51,7 @@ int Form::get_grade_to_execute() const
 std::ostream& operator << (std::ostream & left , Form const & right)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    left << right.getName() << " Form grade " << right.get_grade_to_sign();
+    left << "Form : " << right.getName() << " Grade to Sign " << right.get_grade_to_sign() << " Grade to Exec " << right.get_grade_to_execute();
    return left;
 }
 
@@ -57,15 +61,15 @@ Form& Form::operator = (Form const & rhs)
     return *this;
 }
 
-void Form::beSigned(Bureaucrat& too_Low)
+void Form::beSigned(Bureaucrat const & executor)
 {
-    if(too_Low.getGrade() > _grade_to_sign )
+    if(executor.getGrade() > _grade_to_sign )
     {
         throw Form::GradeTooLowException();
         _is_signed = false;
     }
     else
         _is_signed = true;
-    too_Low.signForm(_name,_is_signed);
+    executor.signForm(_name,_is_signed);
 }
 

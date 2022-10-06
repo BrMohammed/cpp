@@ -5,7 +5,7 @@ RobotomyRequestForm::RobotomyRequestForm() : Form("* Robotomy Request Form *",72
     std::cout << "Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm:: RobotomyRequestForm(std::string target) : Form("* Robotomy Request Form *",72,45,target)
+RobotomyRequestForm:: RobotomyRequestForm(std::string Target): Form("* Robotomy Request Form *",72,45,Target)
 {
     std::cout << "constructor called" << std::endl;
 }
@@ -39,7 +39,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor)
        usleep(1000000);
        if(t % 2 == 0)
         {
-            std::cout << executor.getName() << " * You Win *" << std::endl;
+            std::cout <<  get_target() << " * You Win *" << std::endl;
             t++;
         }
         else 

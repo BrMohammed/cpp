@@ -7,14 +7,13 @@ int main()
 {
     try
     {
-       Bureaucrat B("eli",6);
-    //    PresidentialPardonForm Pf;
-      //      ShrubberyCreationForm Pf;
+       Bureaucrat B("eli",15);
+       //PresidentialPardonForm Pf;
+            ShrubberyCreationForm Pf;
 
-      RobotomyRequestForm Pf;
+     // RobotomyRequestForm Pf;
        Pf.execute(B);
-       Pf.execute(B);
-       B.executeForm(Pf);
+       //B.executeForm(Pf);
     }
     catch (std::exception & e)
     {

@@ -31,14 +31,14 @@ class Form
         Form();
         Form(std::string name,int grade_to_sign,int grade_to_execute,std::string target);
         Form(Form const &  obj);
-        ~Form();
+        virtual ~Form();
         Form& operator = (Form const & rhs);
         std::string getName() const;
+        std::string get_target() const ;
         bool get_is_signed() const;
         int get_grade_to_sign() const;
         int get_grade_to_execute() const;
-        std::string get_target() const;
-        void beSigned(Bureaucrat const & too_Low);
+        void beSigned(Bureaucrat const & executor);
         virtual void execute(Bureaucrat const & executor) = 0;
 };
 std::ostream & operator << (std::ostream & left , Form const& right);

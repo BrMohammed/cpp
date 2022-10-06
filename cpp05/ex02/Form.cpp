@@ -5,8 +5,8 @@ Form::Form() : _name("boot") ,  _grade_to_sign(0),_grade_to_execute(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Form:: Form(std::string name,int grade_to_sign,int grade_to_execute) :  _name(name), _grade_to_sign(grade_to_sign) ,
-    _grade_to_execute(grade_to_execute)
+Form:: Form(std::string name,int grade_to_sign,int grade_to_execute, std::string target) :  _name(name), _grade_to_sign(grade_to_sign) ,
+    _grade_to_execute(grade_to_execute), _target(target)
 {
     std::cout << "constructor called" << std::endl;
      if(_grade_to_execute < 1 || _grade_to_sign < 1 )
@@ -28,6 +28,11 @@ Form::~Form()
 std::string  Form::getName() const
 {
     return _name;
+}
+
+std::string  Form::get_target() const
+{
+    return _target;
 }
 
 bool Form::get_is_signed() const

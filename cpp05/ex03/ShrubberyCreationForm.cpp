@@ -5,9 +5,8 @@ ShrubberyCreationForm::ShrubberyCreationForm() : Form("* Presidential Pardon For
     std::cout << "Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm:: ShrubberyCreationForm(std::string target) : Form("* Presidential Pardon Form *",145,137,target)
+ShrubberyCreationForm:: ShrubberyCreationForm(std::string Target): Form("* Presidential Pardon Form *",145,137,Target)
 {
-    (void)target;
     std::cout << "constructor called" << std::endl;
 }
 
@@ -33,7 +32,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)
     Form::beSigned(executor);
     if(Form::get_grade_to_execute() >=  executor.getGrade())
     {
-        std::ofstream output(executor.getName() + " _shrubbery");
+        std::ofstream output(get_target() + " _shrubbery");
         std::string line = "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n \\  _-     -_  /\n   ~  \\ //  ~\n_- -   | | _- _\n  _ -  | |   -_\n      // \\\\\n";
         if(output.is_open())
             output << line;
