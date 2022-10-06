@@ -23,6 +23,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &  obj) : _name(obj._name)
     else if(getGrade() > 150)
         throw Bureaucrat::GradeTooLowException();
 }
+
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Destructor called" << std::endl;
@@ -50,11 +51,18 @@ Bureaucrat& Bureaucrat::operator = (Bureaucrat const & rhs)
     _grade =  rhs.getGrade();
     return *this;
 }
-void Bureaucrat::signForm(std::string form, bool is_sign)
+void Bureaucrat::signForm(std::string form, bool is_sign) const
 {
     if(is_sign)
         std::cout <<  _name << " signed " << form << std::endl;
     else
-        std::cout <<  _name << " couldn’t sign " << form << "becose" << "some reasons" << std::endl;
+        std::cout <<  _name << " couldn’t sign " << form << std::endl;
 }
 
+void Bureaucrat::executeForm(Form const & form) 
+{
+    if(form.get_is_signed())
+        std::cout << _name << " executed " << form.getName() <<  std ::endl;
+    else
+        std::cout << "Not Signed " << std::endl;
+} 
