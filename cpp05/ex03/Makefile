@@ -1,5 +1,5 @@
 
-NAME = 28B
+NAME = CoffeeTime
 
 CC = c++
 
