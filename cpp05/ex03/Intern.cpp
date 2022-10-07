@@ -59,7 +59,7 @@ Form *Intern::makeForm(std::string FormName, std::string target)
                 std::cout << " Intern creates " << Forms[type] << std::endl;
             return i ;
         default:
-            std::cout << " * This Forn Not Found * " << std::endl;
+           throw Intern::sig_fault();
     }
     return(0);
 }

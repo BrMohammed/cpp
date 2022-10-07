@@ -9,6 +9,13 @@ class Intern
     private :
         Intern(std::string target);
     public :
+    class sig_fault : public std::exception
+        {
+            const char * what () const throw ()
+            {
+                return " * This Forn Not Found * ";
+            }
+        };
     Intern();
     Intern(Intern const &  obj);
     ~Intern();

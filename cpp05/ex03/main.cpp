@@ -4,17 +4,25 @@
 
 int main01()
 {
-    Intern someRandomIntern;
-    Bureaucrat B("eli",15);
-    Form* rrf;
-    rrf = someRandomIntern.makeForm("Shrubbery Creation", "Bender");
-    rrf->execute(B);
-    delete rrf;
-    return(0);
+   
+    try
+    { 
+        Form* rrf; 
+        Intern someRandomIntern;
+        Bureaucrat B("eli",15);
+        rrf = someRandomIntern.makeForm("Robotomy R0equest", "Bender");
+        rrf->execute(B);
+        delete rrf;
+    }
+    catch(std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    return(0); 
 }
 
 int main()
 {
     main01();
-    system("leaks 28B");
+    system("leaks CoffeeTime");
 }
