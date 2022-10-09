@@ -9,10 +9,10 @@ int main(int argc, char** argv)
         float f;
         double d;
         bool is_error = false;
+        std::string conv(argv[1]);
         try
         {
-            i = std::stoi(argv[1]);
-           
+            i = std::stoi(conv);
         }
        catch(std::exception & e)
        {
@@ -20,9 +20,10 @@ int main(int argc, char** argv)
             std::cout << "char: " << "impossible "<< std::endl;
             std::cout << "int: " << "impossible "<< std::endl;
        }
+      
        if(is_error == false)
        {
-            c = i;
+            c = static_cast<char>(i);
             if(i <= 32 || i >= 127)
                 std::cout << "char: " << "Non displayable"<< std::endl;
             else
@@ -32,7 +33,7 @@ int main(int argc, char** argv)
         is_error = false;
        try
        {
-            f = std::stof(argv[1]);
+            f = std::stof(conv);
        }
        catch (std::exception & e)
        {
@@ -43,7 +44,7 @@ int main(int argc, char** argv)
         std::cout << std::setprecision(1) << std::fixed;
         if(is_error == false)
         {
-            d = std::stod(argv[1]);
+            d = std::stod(conv);
             std::cout << "float: " << f << "f"<< std::endl;
             std::cout << "double: " << d <<std::endl;
         }
