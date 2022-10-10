@@ -4,7 +4,7 @@ CPP = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES =  Makefile Cast.cpp
+FILES = Cast.cpp
 
 RM = rm -f
 

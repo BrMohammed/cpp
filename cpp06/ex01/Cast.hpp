@@ -5,7 +5,7 @@
 
 typedef struct t_Data
 {
-   int i =10;
+    int i;
     char t;
 }Data;
 
