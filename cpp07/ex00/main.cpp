@@ -7,7 +7,8 @@ int main( void )
     ::swap( a, b );
     std::cout << "a = " << a << ", b = " << b << std::endl;
     std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;   
+     std::cout << "max( a, b ) = " << ::max( 01.4f, 54545454.0f ) << std::endl;
     std::string c = "chaine1";
     std::string d = "chaine2";
     ::swap(c, d);
