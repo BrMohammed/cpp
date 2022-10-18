@@ -11,6 +11,7 @@ class Fixed
         static const int _fractional = 8;
     public :
         Fixed (void);
+        Fixed (int t);
         Fixed (Fixed const &number);
         ~Fixed(void);
         int getRawBits(void) const;

@@ -5,6 +5,13 @@ Fixed::Fixed()
     std::cout << "Default constructor called" << std::endl;
     this->_number = 0;
 }
+Fixed::Fixed(int i)
+{
+    std::cout << "constructor called" << std::endl;
+    (void)i;
+    this->_number = 0;
+}
+
 
 Fixed::~Fixed()
 {
