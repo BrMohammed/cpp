@@ -9,10 +9,10 @@ FILES =  main.cpp
 RM = rm -f
 objets = $(FILES:.c=.o)
 
+all : $(NAME)
+
 $(NAME):$(objets)
 	$(CC) $(CPPFLAGS) -o $(NAME) $(FILES)
-
-all : $(NAME)
 
 clean :
 		$(RM) $(NAME)
