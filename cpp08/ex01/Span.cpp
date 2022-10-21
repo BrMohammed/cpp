@@ -1,35 +1,42 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int n)
+Span::Span(unsigned int n) : _size(n)
 {
-    _n.push_back(n);
+
 }
 
-void Span::addNumber(unsigned int n)
+void Span::addNumber(int n)
 {
     std::vector<int>::iterator iter;
     for(iter = _n.begin(); iter < _n.end(); iter++)
     {
         if(*iter == (int)n)
-            throw  " * Number allredy here *";
+            throw  "* Number allredy here *";
     }
+    if((int)_n.size() >= (int)_size)
+        throw  "* out of range *";
     _n.push_back(n);
 }
 
 unsigned int Span::shortestSpan()
 {
     int _short = 2147483627;
-    int temp = 0;
+    int temp = 2147483627;
     std::vector<int>::iterator iter;
     iter = _n.begin();
+    if(_size == 1 || _size == 0)
+        throw "* No span Found *";
     while(iter < _n.end())
     {
         std::vector<int>::iterator i;
-        for(i = iter; i < _n.end(); i++)
+        for(i = iter++; i < _n.end(); i++)
         { 
+            if(iter == _n.end())
+                break;
             if(abs(*i - *iter) < temp && abs(*i - *iter) != 0 && abs(*i - *iter) < _short)
                 _short = abs(*i - *iter);
             temp = abs(*i - *iter);
+            std::cout <<  "temp = " << temp << " ; i = " << *i << " ; next = " << *iter  << std::endl;
         }
         iter++;
     }
@@ -42,6 +49,8 @@ unsigned int Span::longestSpan()
     int temp = 0;
     std::vector<int>::iterator iter;
     iter = _n.begin();
+     if(_size == 1 || _size == 0)
+        throw "* No span Found *";
     while(iter < _n.end())
     {
         std::vector<int>::iterator i;
