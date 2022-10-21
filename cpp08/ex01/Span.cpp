@@ -1,5 +1,24 @@
 #include "Span.hpp"
+Span::Span()
+{
+    _size = 0;
+}
 
+Span::Span(Span const & other)
+{
+    *this = other;
+}
+
+Span:: ~Span()
+{
+
+}
+Span & Span::operator = (Span const & other)
+{
+    _size = other._size;
+    _n = other._n;
+    return *this;
+}
 Span::Span(unsigned int n) : _size(n)
 {
 
@@ -35,8 +54,7 @@ unsigned int Span::shortestSpan()
                 break;
             if(abs(*i - *iter) < temp && abs(*i - *iter) != 0 && abs(*i - *iter) < _short)
                 _short = abs(*i - *iter);
-            temp = abs(*i - *iter);
-            std::cout <<  "temp = " << temp << " ; i = " << *i << " ; next = " << *iter  << std::endl;
+            temp = abs(*i - *iter); 
         }
         iter++;
     }

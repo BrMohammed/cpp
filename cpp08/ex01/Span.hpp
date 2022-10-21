@@ -11,7 +11,11 @@ class Span
     std::vector<int> _n;
     unsigned int _size;
     public:
+        Span();
         Span(unsigned int n);
+        Span(Span const & other);
+        ~Span();
+        Span& operator = (Span const & other);
         void addNumber(int n);
         unsigned int shortestSpan();
         unsigned int longestSpan();

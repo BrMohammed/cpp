@@ -5,10 +5,10 @@ int main()
     // std::array<int,5> ar = {0,1,2,3,4};
    try
    {
-        Span sp = Span(0);//
-       // sp.addNumber(ar);
-       //sp.addNumber(0);
-     //   sp.addNumber(1);
+        Span sp = Span(12);//
+        //sp.addNumber(ar);
+       sp.addNumber(0);
+        sp.addNumber(1);
      //   sp.addNumber(2);
      //   sp.addNumber(3);
      //   sp.addNumber(4);
@@ -26,6 +26,13 @@ int main()
    {
         std::cerr << e << '\n';
    }
-   
+     // Span sp = Span(12);
+     // sp.addNumber(5);
+     // sp.addNumber(20);
+     // std::cout << sp.shortestSpan() << std::endl;
+     // std::cout << sp.longestSpan() << std::endl;
+     // Span sp1(sp);
+     //  std::cout << sp.shortestSpan() << std::endl;
+     // std::cout << sp.longestSpan() << std::endl;
     return 0;
 }
