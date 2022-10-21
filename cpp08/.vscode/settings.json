@@ -53,7 +53,10 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "deque": "cpp",
+        "stack": "cpp",
+        "__cxx_version": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

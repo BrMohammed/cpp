@@ -6,9 +6,17 @@ void main01()
     std::cout << q[0] << std::endl;
     std::cout << q[1] << std::endl;
 
-    Array<int> c;
-    c = q;
-    std::cout << c[0] << std::endl;
+    for(int i = 0; i < 5; i++)
+        std::cout << q[i] << std::endl;
+
+    for (int i = 0 ; i < 5; i++)
+    {
+        q[i] = i;
+    } 
+    Array<int> c(q);
+    //c = q;
+    for (int i = 0; i < 5 ; i++)
+        std::cout << c[i] << std::endl;
 }
 
 int main()

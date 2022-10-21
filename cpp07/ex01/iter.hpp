@@ -5,7 +5,7 @@
 
 template< typename T > void print( T const & x )
 { 
-    std::cout << x << std::endl; 
+    std::cout << x << std::endl;
     return; 
 } 
 
