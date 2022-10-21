@@ -56,7 +56,8 @@
         "utility": "cpp",
         "deque": "cpp",
         "stack": "cpp",
-        "__cxx_version": "cpp"
+        "__cxx_version": "cpp",
+        "list": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
