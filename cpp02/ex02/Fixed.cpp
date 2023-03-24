@@ -32,6 +32,7 @@ Fixed & Fixed::operator=(Fixed const & rhs)
         this->_number = rhs.getRawBits();
     return *this;
 }
+
 bool Fixed::operator > (Fixed const & rhs) const
 {
     return ((*this)._number > rhs._number);

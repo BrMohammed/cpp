@@ -5,7 +5,7 @@ CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g
 
-FILES =  Makefile main.cpp Bureaucrat.cpp
+FILES =  main.cpp Bureaucrat.cpp
 
 RM = rm -f
 

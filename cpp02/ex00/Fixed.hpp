@@ -10,9 +10,9 @@ class Fixed
         int _number;
         static const int _fractional = 8;
     public :
-        Fixed (void);
+        Fixed ();
         Fixed (int t);
-        Fixed (Fixed const &number);
+        Fixed (const Fixed & number);
         ~Fixed(void);
         int getRawBits(void) const;
         void setRawBits( int const raw );

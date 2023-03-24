@@ -58,8 +58,6 @@ Form *Intern::makeForm(std::string FormName, std::string target)
                 i = new PresidentialPardonForm(target);
                 std::cout << " Intern creates " << Forms[type] << std::endl;
             return i ;
-        default:
-           throw Intern::sig_fault();
     }
     return(0);
 }

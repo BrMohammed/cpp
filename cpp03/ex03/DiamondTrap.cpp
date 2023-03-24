@@ -8,7 +8,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("boot_clap_name")
     this->_HitPoint =  FragTrap::_HitPoint;
     this->_AttackDamage = FragTrap::_AttackDamage ;
 }
-DiamondTrap::DiamondTrap(std::string name) : 
+DiamondTrap::DiamondTrap(std::string name) 
 {
     std::cout << "DiamondTrap : constructor called" << std::endl;
     ClapTrap::_Name = name + "_clap_name";
@@ -16,6 +16,11 @@ DiamondTrap::DiamondTrap(std::string name) :
     this->_Energypoints = ScavTrap::_Energypoints;
     this->_HitPoint =  FragTrap::_HitPoint;
     this->_AttackDamage = FragTrap::_AttackDamage;
+
+    std::cout << "ttttttt   "  << _Energypoints << std::endl;
+    std::cout << "ttttttt   "  << _HitPoint << std::endl;
+    std::cout << "ttttttt   "  << _AttackDamage << std::endl;
+
 }
 DiamondTrap::DiamondTrap(DiamondTrap const &other)
 {

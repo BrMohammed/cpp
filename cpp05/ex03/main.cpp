@@ -10,7 +10,7 @@ int main01()
         Form* rrf; 
         Intern someRandomIntern;
         Bureaucrat B("eli",15);
-        rrf = someRandomIntern.makeForm("Robotomy R0equest", "Bender");
+        rrf = someRandomIntern.makeForm("Robotofgmy R0equest", "Bender");
         rrf->execute(B);
         delete rrf;
     }

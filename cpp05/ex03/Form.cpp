@@ -65,6 +65,7 @@ void Form::beSigned(Bureaucrat const & executor)
 {
     if(executor.getGrade() > _grade_to_sign )
     {
+        
         throw Form::GradeTooLowException();
         _is_signed = false;
     }
