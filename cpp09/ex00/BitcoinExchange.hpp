@@ -4,21 +4,24 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <ctime>
+#include <stdlib.h>
 
 class BitcoinExchange
 {
 
     private:
         std::map<std::string,float> data;
+        std::string input;
         std::ifstream myfile;
-        void fille_map(std::string &str);
+        void fille_map();
     public:
         BitcoinExchange();
-        BitcoinExchange(std::map<std::string,float> &other);
+        BitcoinExchange(std::string const &str);
         BitcoinExchange(BitcoinExchange const & other);
         ~BitcoinExchange();
         BitcoinExchange & operator = (BitcoinExchange const &rhs);
-
+        void  result_of_the_value();
 
 };
 
