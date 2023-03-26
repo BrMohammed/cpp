@@ -9,4 +9,5 @@ int main(int argc, char** argv)
     }
      else
         std::cerr << "Error: could not open file." << std::endl;
+    return 0;
 }

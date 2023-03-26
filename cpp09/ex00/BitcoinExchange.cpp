@@ -6,8 +6,7 @@ BitcoinExchange::BitcoinExchange() : input("")
 }
 BitcoinExchange::BitcoinExchange(std::string const &str) : input(str)
 {
-    // if(!data.empty())
-        fille_map();
+    fille_map();
 }
 BitcoinExchange::BitcoinExchange(BitcoinExchange const & other)
 {
@@ -22,8 +21,8 @@ BitcoinExchange & BitcoinExchange::operator = (BitcoinExchange const &rhs)
 
 void BitcoinExchange::fille_map()
 {
-   std::string buffer;
-   data.clear();
+    std::string buffer;
+    data.clear();
     myfile.open("data.csv");
     if(myfile.is_open() )
     { 
@@ -78,4 +77,7 @@ void  BitcoinExchange::result_of_the_value()
                
         }
     }
+    if(input == "")
+        std::cerr << "Error: bad input" << std::endl;
+
 }
