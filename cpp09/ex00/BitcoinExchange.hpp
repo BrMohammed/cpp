@@ -15,6 +15,8 @@ class BitcoinExchange
         std::string input;
         std::ifstream myfile;
         void fille_map();
+        int chek_if_valid_date(std::string &str);
+        
     public:
         BitcoinExchange();
         BitcoinExchange(std::string const &str);
