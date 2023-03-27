@@ -34,6 +34,17 @@ void BitcoinExchange::fille_map()
     }
     myfile.close();
 }
+
+bool isNumber(const std::string& s)
+{
+// std::cerr <<  s << std::endl;
+    for (int i = 0 ; i < (int)s.length();i++) 
+    {
+        if (isalpha(s[i]) == 0)
+            return false;
+    }
+    return true;
+}
 void  BitcoinExchange::result_of_the_value()
 {
     std::string buffer;
@@ -57,10 +68,13 @@ void  BitcoinExchange::result_of_the_value()
                         std::cerr << "Error: bad input => " << buffer << std::endl;
                         continue;
                     }
+                    if(buffer.substr(pos + 1).empty() || isNumber(buffer.substr(pos + 2).c_str()))
+                    {
+                        std::cerr << "Error: bad input => " << buffer << std::endl;
+                        continue;
+                    }
                     value = atof(buffer.substr(pos + 1).c_str());
-                    if(value == 0)
-                        std::cerr << "Error: bad number => " << buffer.substr(pos + 1).c_str() << std::endl;
-                    else if(value < 0)
+                    if(value < 0)
                         std::cerr << "Error: not a positive number. "<< std::endl;
                     else if(value > 1000)
                         std::cerr << "Error: too large a number."<< std::endl;
