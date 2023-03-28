@@ -40,9 +40,15 @@ void BitcoinExchange::fille_map()
 
 bool isNumber(const std::string& s)
 {
+    bool is_point = false;
     for (int i = 0 ; i < (int)s.length();i++) 
     {
-        if ((isnumber(s[i]) == 0 && s[i] != '-' && i != 0) || (isnumber(s[i]) == 0 && i != 0 ))
+        if((s[i] == '.' && is_point == false) || (s[i] == ',' && is_point == false) )
+        {
+            is_point = true;
+            i++;
+        }  
+        else if ((isnumber(s[i]) == 0 && s[i] != '-' && i != 0) || (isnumber(s[i]) == 0 && i != 0 ))
             return false;
     }
     return true;
