@@ -1,10 +1,10 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() : input("")
+BitcoinExchange::BitcoinExchange() : input(""),error(false)
 {
     fille_map();
 }
-BitcoinExchange::BitcoinExchange(std::string const &str) : input(str)
+BitcoinExchange::BitcoinExchange(std::string const &str) : input(str) , error(false)
 {
     fille_map();
 }
@@ -16,6 +16,7 @@ BitcoinExchange::~BitcoinExchange(){}
 BitcoinExchange & BitcoinExchange::operator = (BitcoinExchange const &rhs)
 {
     data = rhs.data;
+    error = rhs.error;
     return *this;
 }
 void BitcoinExchange::fille_map()
@@ -32,15 +33,16 @@ void BitcoinExchange::fille_map()
                 data.insert(std::make_pair(buffer.substr(0,buffer.find(",")),atof(buffer.substr(buffer.find(",") + 1).c_str())));
         }
     }
+    else
+        error = true;
     myfile.close();
 }
 
 bool isNumber(const std::string& s)
 {
-// std::cerr <<  s << std::endl;
     for (int i = 0 ; i < (int)s.length();i++) 
     {
-        if (isalpha(s[i]) == 0)
+        if ((isnumber(s[i]) == 0 && s[i] != '-' && i != 0) || (isnumber(s[i]) == 0 && i != 0 ))
             return false;
     }
     return true;
@@ -51,6 +53,11 @@ void  BitcoinExchange::result_of_the_value()
     std::string date = "";
     float   value ;
     double pos = 0;
+    if(error)
+    {
+         std::cerr << "Error: bad input" << std::endl;
+         return;
+    }
     myfile.open(input);
     if(myfile.is_open() )
     { 
@@ -68,7 +75,7 @@ void  BitcoinExchange::result_of_the_value()
                         std::cerr << "Error: bad input => " << buffer << std::endl;
                         continue;
                     }
-                    if(buffer.substr(pos + 1).empty() || isNumber(buffer.substr(pos + 2).c_str()))
+                    if(buffer.substr(pos + 1).empty() || !isNumber(buffer.substr(pos + 2).c_str()))
                     {
                         std::cerr << "Error: bad input => " << buffer << std::endl;
                         continue;
@@ -78,14 +85,22 @@ void  BitcoinExchange::result_of_the_value()
                         std::cerr << "Error: not a positive number. "<< std::endl;
                     else if(value > 1000)
                         std::cerr << "Error: too large a number."<< std::endl;
+                    else if(!data.find(date)->first.empty())
+                        std::cout << date << " => " << value << " = " << data.find(date)->second * value  <<   std::endl;
                     else
-                        std::cout << date << " => " << value << " = " << data.lower_bound(date)->second * value  <<   std::endl;
+                    {
+                        std::map<std::string,float>::iterator it = data.lower_bound(date);
+                        --it;
+                        std::cout << date << " => " << value << " = " << it->second * value  <<   std::endl;
+                    }
                 }
                 else
                     std::cerr << "Error: bad input => " << buffer << std::endl;
             }  
         }
     }
+    else
+        std::cerr << "Error: bad input" << std::endl;
     if(input == "")
         std::cerr << "Error: bad input" << std::endl;
 
@@ -101,7 +116,9 @@ int BitcoinExchange::chek_if_valid_date(std::string &str)
     for(int i = 0 ; i < (int)str.length();i++)
     {
         if(str[i] == '-')
-        {
+        {   
+            if(str[i - 1] == '-' || i == 0)
+                return 1;
             if(t.tm_year == 0)
                 t.tm_year = atoi(buffer.c_str());
             else if(t.tm_mon == 0)
@@ -126,5 +143,7 @@ int BitcoinExchange::chek_if_valid_date(std::string &str)
         return 1;
      else if(t.tm_mday < 1 || t.tm_mday > 31)
         return 1;
+    if(t.tm_mon == 2 && t.tm_mday > 29)
+         return 1;
     return 0;
 }

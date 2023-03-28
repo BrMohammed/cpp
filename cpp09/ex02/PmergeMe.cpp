@@ -22,8 +22,8 @@ PmergeMe::PmergeMe(char **input) : error(false)
                 break;
             }
             else
-                data.push_back(atoi(std::string(input[i]).c_str()));
-                data_01.push_back(atoi(std::string(input[i]).c_str()));
+                data_vec.push_back(atoi(std::string(input[i]).c_str()));
+                data_que.push_back(atoi(std::string(input[i]).c_str()));
         }
         else
         {
@@ -37,143 +37,104 @@ PmergeMe::PmergeMe(PmergeMe const & other){ *this = other;}
 PmergeMe::~PmergeMe(){}
 PmergeMe & PmergeMe::operator = (PmergeMe const & rhs)
 { 
-    data = rhs.data;
+    data_vec = rhs.data_vec;
+    data_que = rhs.data_que;
     return *this;
 }
 void PmergeMe::sort()
 {
-    int prefix = 11;
     if(!error)
     {
-        if((int)data.size() < prefix)
-            small_sort();
-        else
-            big_sort();
+         double result_vec ;
+        double result_deque ;
+        std::clock_t end;
+        std::clock_t start;
+        std::cout << "Before: ";
+        for(int i = 0 ; i < (int) data_vec.size() ; i++)
+            std::cout << data_vec[i]  << " ";
+        std::cout << std::endl;
+        start = std::clock();
+        mergeSort_vec(data_vec, 0, data_vec.size() - 1,10);//
+        end = std::clock();
+        result_vec = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
+        start = std::clock();
+        mergeSort_que(data_que, 0, data_que.size() - 1,10);//
+        end = std::clock();
+        result_deque = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
+        std::cout << "After: ";
+        for(int i = 0 ; i < (int) data_vec.size() ; i++)
+            std::cout <<  data_vec[i]  << " ";
+        std::cout << std::endl;
+        std::cout << "Time to process a range of "<< data_vec.size() << " elements with std::vector : "<< std::fixed << result_vec << " us" << std::endl;
+        std::cout << "Time to process a range of "<< data_que.size() << " elements with std::deque : " << std::fixed  << result_deque << " us" << std::endl;
     }
     else
         std::cerr << "ERROR" << std::endl;
-    
 }
 
-void PmergeMe::small_sort ()
-{
-    double result_vec ;
-    double result_deque ;
-    std::clock_t end;
-    std::clock_t start;
-    std::cout << "Before: ";
-    for(int i = 0 ; i < (int) data.size() ; i++)
-        std::cout << data[i]  << " ";
-    std::cout << std::endl;
-    start = std::clock();
-    merge_insert(data);
-    end = std::clock();
-    result_vec = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
-    start = std::clock();
-    merge_insert(data_01);
-    end = std::clock();
-    result_deque = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
-    std::cout << "After: ";
-    for(int i = 0 ; i < (int) data_01.size() ; i++)
-        std::cout <<  data_01[i]  << " ";
-    std::cout << std::endl;
-    std::cout << "Time to process a range of "<< data.size() << "elements with std::vector : "<< std::fixed << result_vec << " us" << std::endl;
-    std::cout << "Time to process a range of "<< data_01.size() << "elements with std::deque : " << std::fixed  << result_deque << " us" << std::endl;
-}
-template<typename T>
-void PmergeMe::merge_insert(T &cont)
+void PmergeMe::insertion_sort_vec(std::vector<int> &vec,size_t s, size_t e)
 {
     size_t buffer;
-    for(size_t i = 0 ;i < cont.size(); i++)
+    for(size_t i = s ;i <= e; i++)
     {
-        for(size_t j = i ; j < cont.size(); j++)
+        for(size_t j = i + 1 ; j <= e; j++)
         {
-            if(cont[i] > cont[j])
+            if(vec[i] > vec[j])
             {
-                buffer = cont[i];
-                cont[i] = cont[j];
-                cont[j] = buffer;
+                buffer = vec[i];
+                vec[i] = vec[j];
+                vec[j] = buffer;
+            }
+        }
+    }
+}
+void PmergeMe::mergeSort_vec(std::vector<int> &vec, int s, int e,int threshold)
+{
+    if(s < e)
+    {
+        if ((e - s) <= threshold)
+        {
+            insertion_sort_vec(vec, s, e);
+            return;
+        }
+        int m = (e + s) / 2;
+        mergeSort_vec(vec, s, m,threshold);
+        mergeSort_vec(vec, m + 1, e,threshold);
+    }
+    insertion_sort_vec(vec, 0, vec.size() - 1);
+}
+
+
+
+void PmergeMe::insertion_sort_que(std::deque<int> &que,size_t s, size_t e)
+{
+    size_t buffer;
+    for(size_t i = s ;i <= e; i++)
+    {
+        for(size_t j = i ; j <= e; j++)
+        {
+            if(que[i] > que[j])
+            {
+                buffer = que[i];
+                que[i] = que[j];
+                que[j] = buffer;
             }
         }
     }
 
 }
-
-void PmergeMe::big_sort ()
+void PmergeMe::mergeSort_que(std::deque<int> &que, int s, int e,int threshold)
 {
-    double result_vec ;
-    double result_deque ;
-    std::clock_t end;
-    std::clock_t start;
-    std::cout << "Before: ";
-    for(int i = 0 ; i < (int) data.size() ; i++)
-        std::cout << data[i]  << " ";
-    std::cout << std::endl;
-    start = std::clock();
-    mergeSort(data, 0, data.size() - 1);
-    end = std::clock();
-    result_vec = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
-    start = std::clock();
-    mergeSort(data_01, 0, data_01.size() - 1);
-    end = std::clock();
-    result_deque = static_cast<double>(end - start) / CLOCKS_PER_SEC ;
-    std::cout << "After: ";
-    for(int i = 0 ; i < (int) data_01.size() ; i++)
-        std::cout <<  data_01[i]  << " ";
-    std::cout << std::endl;
-    std::cout << "Time to process a range of "<< data.size() << "elements with std::vector : "<< std::fixed << result_vec << " us" << std::endl;
-    std::cout << "Time to process a range of "<< data_01.size() << "elements with std::deque : " << std::fixed  << result_deque << " us" << std::endl;
-}
-
-template <typename T>
-void PmergeMe::mergeSort(T &vec, int s, int e)
-{
-    if (e - s  <= 1)
-        return; 
-    int m = (e + s) / 2;
-    mergeSort(vec, s, m);
-    mergeSort(vec, m + 1, e);
-    merge(vec, s, m, e);
-}
-template <typename T>
-void PmergeMe::merge(T &vec, int s, int m, int e)
-{
-    int n1 = m - s + 1;
-    int n2 = e - m;
-    int i, j, k;
-    int L[n1], R[n2];
-
-    for (int i = 0; i < n1; i++)
-        L[i] = vec[s + i];
-    for (int j = 0; j < n2; j++)
-        R[j] = vec[m + 1 + j];
-    i = 0;
-    j = 0;
-    k = s;
-    while (i < n1 && j < n2) 
+    if(s < e)
     {
-        if (L[i] <= R[j]) 
+        if ((e - s) <= threshold)
         {
-            vec[k] = L[i];
-            i++;
-        } 
-        else 
-        {
-            vec[k] = R[j];
-            j++;
+            insertion_sort_que(que, s, e);
+            return;
         }
-        k++;
+        int m = (e + s) / 2;
+        mergeSort_que(que, s, m,threshold);
+        mergeSort_que(que, m + 1, e,threshold);
     }
-    while (i < n1) 
-    {
-        vec[k] = L[i];
-        i++;
-        k++;
-    }
-    while (j < n2) 
-    {
-        vec[k] = R[j];
-        j++;
-        k++;
-    }
+    insertion_sort_que(que, 0, que.size() - 1);
 }

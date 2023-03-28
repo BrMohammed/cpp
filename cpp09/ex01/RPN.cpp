@@ -25,7 +25,7 @@ void RPN::pos_fix()
     for(size_t i = 0; i < input.length();i++)
     {
         if (input[i] >= '0' && input[i] <= '9')
-            numbers.push_back((int)(input[i] - '0'));
+            numbers.push_front((int)(input[i] - '0'));
         else if((input[i] == '/' || input[i]  == '*' 
             || input[i]  == '-' || input[i]  == '+') )
         {
@@ -34,10 +34,10 @@ void RPN::pos_fix()
                 std::cerr << "ERROR" << std::endl;
                 return;
             }
-            int num1 = numbers.back();
-            numbers.pop_back();
-            int num2 = numbers.back();
-            numbers.pop_back();
+            int num1 = numbers.front();
+            numbers.pop_front();
+            int num2 = numbers.front();
+            numbers.pop_front();
             switch(input[i])
             {
                 case '+':

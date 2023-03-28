@@ -16,6 +16,7 @@ class BitcoinExchange
         std::ifstream myfile;
         void fille_map();
         int chek_if_valid_date(std::string &str);
+        bool error;
         
     public:
         BitcoinExchange();

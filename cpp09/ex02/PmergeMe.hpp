@@ -11,17 +11,13 @@
 class PmergeMe
 {
     private:
-        std::vector<int> data;
-        std::deque<int> data_01;
-        template <typename T>
-        void merge(T &cont, int s, int m, int e);
-        template <typename T>
-        void mergeSort(T & cont, int s, int e);
+        std::vector<int> data_vec;
+        std::deque<int> data_que;
+        void mergeSort_vec(std::vector<int> & vec, int s, int e,int threshold);
+        void insertion_sort_vec( std::vector<int> &vec,size_t s, size_t e);
+        void mergeSort_que(std::deque<int> & que, int s, int e,int threshold);
+        void insertion_sort_que( std::deque<int> &que,size_t s, size_t e);
         bool error;
-        void small_sort();
-        void big_sort();
-        template <typename T>
-        void merge_insert(T &cont);
     public:
         PmergeMe();
         PmergeMe(char **input);
