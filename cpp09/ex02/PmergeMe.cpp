@@ -100,8 +100,52 @@ void PmergeMe::mergeSort_vec(std::vector<int> &vec, int s, int e,int threshold)
         int m = (e + s) / 2;
         mergeSort_vec(vec, s, m,threshold);
         mergeSort_vec(vec, m + 1, e,threshold);
+        merge_vec(vec, s, m, e);
     }
-    insertion_sort_vec(vec, 0, vec.size() - 1);
+}
+
+void PmergeMe::merge_vec(std::vector<int> &vec, int s, int m, int e)
+{
+    int n1 = m - s + 1;
+    int n2 = e - m;
+
+    int L[n1], M[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = vec[s + i];
+    for (int j = 0; j < n2; j++)
+        M[j] = vec[m + 1 + j];
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = s;
+    while (i < n1 && j < n2) 
+    {
+        if (L[i] <= M[j]) 
+        {
+            vec[k] = L[i];
+            i++;
+        } 
+        else 
+        {
+            vec[k] = M[j];
+            j++;
+        }
+        k++;
+    }
+  while (i < n1) 
+  {
+    vec[k] = L[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) 
+  {
+    vec[k] = M[j];
+    j++;
+    k++;
+  }
 }
 
 
@@ -135,6 +179,50 @@ void PmergeMe::mergeSort_que(std::deque<int> &que, int s, int e,int threshold)
         int m = (e + s) / 2;
         mergeSort_que(que, s, m,threshold);
         mergeSort_que(que, m + 1, e,threshold);
+        merge_que(que, s, m, e);
     }
-    insertion_sort_que(que, 0, que.size() - 1);
+}
+
+void PmergeMe::merge_que(std::deque<int> &que, int s, int m, int e)
+{
+    int n1 = m - s + 1;
+    int n2 = e - m;
+
+    int L[n1], M[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = que[s + i];
+    for (int j = 0; j < n2; j++)
+        M[j] = que[m + 1 + j];
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = s;
+    while (i < n1 && j < n2) 
+    {
+        if (L[i] <= M[j]) 
+        {
+            que[k] = L[i];
+            i++;
+        } 
+        else 
+        {
+            que[k] = M[j];
+            j++;
+        }
+        k++;
+    }
+  while (i < n1) 
+  {
+    que[k] = L[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) 
+  {
+    que[k] = M[j];
+    j++;
+    k++;
+  }
 }

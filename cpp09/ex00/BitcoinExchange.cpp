@@ -38,24 +38,45 @@ void BitcoinExchange::fille_map()
     myfile.close();
 }
 
-bool isNumber(const std::string& s)
+bool isNumber( std::string & s)
 {
     bool is_point = false;
+    bool is_space = false;
+    bool is_negative = false;
     for (int i = 0 ; i < (int)s.length();i++) 
     {
-        if((s[i] == '.' && is_point == false) || (s[i] == ',' && is_point == false) )
+        if(s[i] == 32 && is_space == false )
         {
-            is_point = true;
-            i++;
-        }  
-        else if ((isnumber(s[i]) == 0 && s[i] != '-' && i != 0) || (isnumber(s[i]) == 0 && i != 0 ))
-            return false;
+            is_space = true;
+            s.erase(i,1);
+            i--;
+        }
+        else
+        {
+            if(s[i] == ',')
+                s[i] = '.';
+            if((s[i] == '.' && is_point == false) )
+            {
+                is_point = true;
+                i++;
+            }  
+            else if(is_negative == false && s[i] == '-')
+            {
+                is_negative = true;
+                i++;
+            }  
+            else if ((isnumber(s[i]) == 0))
+                return false;
+        }
+
     }
     return true;
 }
 void  BitcoinExchange::result_of_the_value()
 {
     std::string buffer;
+    std::string buffer2;
+    std::string c;
     std::string date = "";
     float   value ;
     double pos = 0;
@@ -70,23 +91,24 @@ void  BitcoinExchange::result_of_the_value()
         for(int i = 0; myfile.good() ;i++ )
         {
             std::getline (myfile, buffer);
-            if(i != 0)
+            if(i != 0 || (buffer[0] >= '0' && buffer[0] <= '9') )
             {
                 pos = buffer.find("|");
                 if(pos != std::string::npos)
                 {
                     date = buffer.substr(0,pos - 1);
+                    buffer2 = buffer.substr(pos + 1);
                     if(chek_if_valid_date(date) == 1)
                     {
                         std::cerr << "Error: bad input => " << buffer << std::endl;
                         continue;
                     }
-                    if(buffer.substr(pos + 1).empty() || !isNumber(buffer.substr(pos + 2).c_str()))
+                    if(buffer.substr(pos + 1).empty() || !isNumber(buffer2))
                     {
                         std::cerr << "Error: bad input => " << buffer << std::endl;
                         continue;
                     }
-                    value = atof(buffer.substr(pos + 1).c_str());
+                    value = atof(buffer2.c_str());
                     if(value < 0)
                         std::cerr << "Error: not a positive number. "<< std::endl;
                     else if(value > 1000)

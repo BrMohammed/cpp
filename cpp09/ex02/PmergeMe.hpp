@@ -14,6 +14,8 @@ class PmergeMe
         std::vector<int> data_vec;
         std::deque<int> data_que;
         void mergeSort_vec(std::vector<int> & vec, int s, int e,int threshold);
+        void merge_vec(std::vector<int> &vec, int s, int m, int e);
+        void merge_que(std::deque<int> & que, int s, int m, int e);
         void insertion_sort_vec( std::vector<int> &vec,size_t s, size_t e);
         void mergeSort_que(std::deque<int> & que, int s, int e,int threshold);
         void insertion_sort_que( std::deque<int> &que,size_t s, size_t e);
